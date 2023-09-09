@@ -1,3 +1,4 @@
+from typing import Optional
 import numpy as np
 import optuna
 import torch
@@ -16,6 +17,7 @@ def candidates_func(
     train_obj: torch.Tensor,
     train_con: torch.Tensor, 
     bounds: torch.Tensor,
+    pending_x: Optional[torch.Tensor],
 ) -> torch.Tensor:
 
     train_x = normalize(train_x, bounds=bounds)
