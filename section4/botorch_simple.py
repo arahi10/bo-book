@@ -14,7 +14,7 @@ import torch
 
 
 def default_candidates_func(
-    train_x, train_obj, train_con, bounds
+    train_x, train_obj, train_con, bounds, pending_x
 ):
 
     train_x = normalize(train_x, bounds=bounds)
@@ -48,7 +48,7 @@ def default_candidates_func(
 
 
 def customized_candidates_func(
-    train_x, train_obj, train_con, bounds
+    train_x, train_obj, train_con, bounds, Pending_x
 ):
         
     train_x = normalize(train_x, bounds=bounds)
