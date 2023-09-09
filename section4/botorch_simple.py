@@ -1,6 +1,6 @@
 from botorch.acquisition.analytic import ExpectedImprovement
 from botorch.acquisition.monte_carlo import qExpectedImprovement
-from botorch.fit import fit_gpytorch_mll
+from botorch.fit import fit_gpytorch_mll,fit_gpytorch_model
 from botorch.models import SingleTaskGP
 from botorch.models.transforms.outcome import Standardize
 from botorch.optim import optimize_acqf
@@ -55,7 +55,7 @@ def customized_candidates_func(
     
     model = SingleTaskGP(train_x, train_obj, outcome_transform=Standardize(m=train_obj.size(-1)))
     mll = ExactMarginalLogLikelihood(model.likelihood, model)
-    fit_gpytorch_mll(mll)
+    fit_gpytorch_model(mll)
 
     acqf = ExpectedImprovement(
         model=model,
